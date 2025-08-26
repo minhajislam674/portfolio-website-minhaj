@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import StoryblokProvider from "./components/StoryblokProvider";
+import { Footer } from "./components/ui/Footer";
+import Header from "./components/ui/Header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,12 +26,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <StoryblokProvider>
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <Header />
+     
+
+      <main className="min-h-screen">{children}</main>
+
+        <Footer />
       </body>
     </html>
+    </StoryblokProvider>
   );
 }
