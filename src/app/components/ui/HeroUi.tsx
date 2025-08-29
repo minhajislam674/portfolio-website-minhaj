@@ -1,4 +1,3 @@
-// components/HeroUi.tsx
 "use client";
 
 import { motion } from "framer-motion";
@@ -10,7 +9,7 @@ interface HeroUiProps {
   subheadline: string;
   ctaLabel: string;
   ctaUrl: string;
-  ctaIcon: string;
+  ctaIcon?: string;
   secondaryLabel: string;
   secondaryCtaUrl: string;
   secondaryCtaIcon?: string;
@@ -26,8 +25,8 @@ export default function HeroUi({
   secondaryCtaIcon,
 }: HeroUiProps) {
   return (
-    <section className="">
-      <div className="lg:w-3/6 xs:w-5/6 mx-auto xs:mt-16">
+    <section className="flex flex-col bg-primary-900 h-screen py-12 px-4 sm:py-16 sm:px-8 lg:py-20 lg:px-32 justify-center">
+      <div className="w-full max-w-3xl mx-auto">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -38,25 +37,26 @@ export default function HeroUi({
             visible: { opacity: 1, x: 0 },
           }}
         >
+          {/* Headline */}
           <h1
-            style={{ lineHeight: 1.5 }}
-            className="font-montserrat xs:text-xl md:text-3xl text-blue-400"
+            className="font-montserrat text-lg sm:text-xl md:text-2xl text-secondary leading-relaxed"
           >
             {headline}
           </h1>
 
+          {/* Subheadline */}
           <p
-            style={{ lineHeight: 1.2 }}
-            className="mt-5 mb-7 font-montserrat xs:text-2xl md:text-5xl leading-8 font-bold"
+            className="mt-4 mb-8 font-montserrat text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-snug"
           >
             {subheadline}
           </p>
 
-          <div className="flex gap-3 lg:flex-row xs:flex-col">
+          {/* CTA buttons */}
+          <div className="flex flex-col sm:flex-row gap-4">
             <Link href={ctaUrl}>
               <button
                 type="button"
-                className="py-3 w-48 font-semibold md:text-xl text-white bg-blue-600 hover:bg-blue-700 transition duration-300 rounded-md"
+                className="w-full sm:w-auto px-6 py-3 font-semibold text-base sm:text-lg lg:text-xl text-white bg-primary-100 hover:bg-primary-500 transition duration-300 rounded-md hover:cursor-pointer"
               >
                 {ctaLabel}
               </button>
@@ -66,7 +66,7 @@ export default function HeroUi({
               href={secondaryCtaUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex justify-center items-center gap-2 py-3 w-48 border-2 border-white font-semibold md:text-xl hover:bg-white hover:text-gray-900 transition duration-300 rounded-md"
+              className="flex justify-center items-center gap-2 w-full sm:w-auto px-6 py-3 border-1 border-white font-semibold text-base sm:text-lg lg:text-xl text-white bg-primary-900 hover:bg-primary-500 transition duration-300 rounded-md"
             >
               {secondaryLabel}
               {secondaryCtaIcon && (

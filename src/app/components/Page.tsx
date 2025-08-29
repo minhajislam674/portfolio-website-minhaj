@@ -4,7 +4,7 @@ import {
 } from '@storyblok/react/rsc';
 
 const Page = ({ blok }) => (
-	<main {...storyblokEditable(blok)} className="mt-16">
+	<main {...storyblokEditable(blok)} className="my-16">
 		{blok.body?.map((nestedBlok) => (
 			<StoryblokServerComponent blok={nestedBlok} key={nestedBlok._uid} />
 		))}

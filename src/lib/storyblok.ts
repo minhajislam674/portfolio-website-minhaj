@@ -3,6 +3,10 @@ import Grid from "@/app/components/Grid";
 import Teaser from "@/app/components/Teaser";
 import { apiPlugin, storyblokInit } from "@storyblok/react/rsc";
 import Hero from "@/app/components/Hero";
+import CardItem from "@/app/components/CardItem";
+import Text from "@/app/components/Text";
+import TextImage from "@/app/components/TextImage";
+import Contact from "@/app/components/Contact";
 
 export const getStoryblokApi = storyblokInit({
   accessToken: process.env.STORYBLOK_DELIVERY_API_TOKEN,
@@ -12,6 +16,10 @@ export const getStoryblokApi = storyblokInit({
     grid: Grid,
     teaser: Teaser,
     hero: Hero,
+    cardItem: CardItem,
+    text: Text,
+    textImage: TextImage,
+    contact: Contact,
   },
   apiOptions: {
     /** Set the correct region for your space. Learn more: https://www.storyblok.com/docs/packages/storyblok-js#example-region-parameter */
