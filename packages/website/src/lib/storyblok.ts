@@ -1,6 +1,5 @@
 import Page from "@/app/components/Page";
 import Grid from "@/app/components/Grid";
-import Teaser from "@/app/components/Teaser";
 import { apiPlugin, storyblokInit } from "@storyblok/react/rsc";
 import Hero from "@/app/components/Hero";
 import CardItem from "@/app/components/CardItem";
@@ -14,7 +13,6 @@ export const getStoryblokApi = storyblokInit({
   components: {
     page: Page,
     grid: Grid,
-    teaser: Teaser,
     hero: Hero,
     cardItem: CardItem,
     text: Text,
