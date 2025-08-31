@@ -13,7 +13,7 @@
 }
 
 /* Map into Tailwind theme tokens */
-@theme inline {
+:root {
   --color-primary-100: var(--primary-100);
   --color-primary-500: var(--primary-500);
   --color-primary-900: var(--primary-900);
