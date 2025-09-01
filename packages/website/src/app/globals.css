@@ -14,13 +14,13 @@
 
 /* Map into Tailwind theme tokens */
 @theme inline {
-  --color-primary-100: var(--primary-100);
-  --color-primary-500: var(--primary-500);
-  --color-primary-900: var(--primary-900);
-  --color-secondary: var(--secondary);
+  --color-primary-100: #0D8388;
+  --color-primary-500: #395B64;
+  --color-primary-900: #2C3333;
+  --color-secondary: #7ED6DF;
 
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: #2C3333;
+  --color-foreground: #ffffff;
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
