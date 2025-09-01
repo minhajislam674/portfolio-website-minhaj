@@ -12,7 +12,6 @@ export default async function Page({ params }) {
 
 	const storyblokApi = getStoryblokApi();
 	let { data } = await storyblokApi.get(`cdn/stories/${fullSlug}`, sbParams);
-	console.log(data.story);
 
 	return <StoryblokStory story={data.story} />;
 }
