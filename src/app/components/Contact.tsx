@@ -17,7 +17,7 @@ const Contact = ({ blok }: ContactProps) => {
       />
 
     </div>
-    );
-};
+    )
+}
 
 export default Contact;

@@ -14,6 +14,7 @@ interface TextImageBlok extends SbBlokData {
     imageUrl: string;
     imageAlt?: string;
     imagePosition?: "left" | "right" | "top" | "bottom";
+    imageCaption?: string;
 }
 
 interface TextImageProps {
@@ -22,7 +23,7 @@ interface TextImageProps {
 const TextImage = ({ blok }: TextImageProps) => {
   return (
     <div {...storyblokEditable(blok)}>
-      <TextImageUi text={blok.text} headline={blok.headline} imageUrl={blok.imageUrl} imageAlt={blok.imageAlt} imagePosition={blok.imagePosition} />
+      <TextImageUi text={blok.text} headline={blok.headline} imageUrl={blok.imageUrl} imageAlt={blok.imageAlt} imagePosition={blok.imagePosition} imageCaption={blok.imageCaption} />
     </div>
   );
 };
