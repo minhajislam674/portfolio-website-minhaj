@@ -60,5 +60,5 @@ export default function ContactUi({ headline }: ContactUiProps) {
         </motion.div>
       </div>
     </section>
-  );
+  )
 }

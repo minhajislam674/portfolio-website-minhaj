@@ -10,6 +10,8 @@ interface HeroBlok extends SbBlokData {
   secondaryLabel: string;
   secondaryCtaUrl: string;
   secondaryCtaIcon?: string;
+  ctaOpenInNewTab?: boolean;
+  secondaryCtaOpenInNewTab?: boolean;
 }
 
 interface HeroProps {
@@ -28,6 +30,8 @@ const Hero = ({ blok }: HeroProps) => {
         secondaryLabel={blok.secondaryLabel}
         secondaryCtaUrl={blok.secondaryCtaUrl}
         secondaryCtaIcon={blok.secondaryCtaIcon}
+        ctaOpenInNewTab={blok.ctaOpenInNewTab}
+        secondaryCtaOpenInNewTab={blok.secondaryCtaOpenInNewTab}
       />
 
     </div>

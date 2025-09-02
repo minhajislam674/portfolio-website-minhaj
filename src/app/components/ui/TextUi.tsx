@@ -26,14 +26,17 @@ const TextUi = ({ text, headline }: TextUiProps) => {
         hidden: { opacity: 0, y: 50 },
         visible: { opacity: 1, y: 0 },
       }}
-      className="w-full max-w-4xl mx-auto"
+      className="w-full max-w-5xl mx-auto my-12"
     >
-         {headline && <h1 className="text-5xl font-bold my-10 px-4 lg:px-0 text-secondary">{headline}</h1>}
-        <div className="px-4 lg:px-0 text-white overflow-hidden">
-        
+      {headline && (
+        <h1 className="text-4xl md:text-5xl font-bold mb-8 px-6 md:px-8 text-secondary">
+          {headline}
+        </h1>
+      )}
+      <div className="px-6 md:px-8 text-white tracking-wide">
         {render(text, storyblokRichTextResolvers)}
-        </div>
-  </motion.div>
+      </div>
+    </motion.div>
   );
 };
 

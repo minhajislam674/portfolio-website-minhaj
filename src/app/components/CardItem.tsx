@@ -9,6 +9,7 @@ interface CardItemBlok extends SbBlokData {
   ctaLabel: string;
   ctaHref: string;
   techStack?: string[];
+  ctaOpenInNewTab?: boolean;
 }
 
 interface CardItemProps {
@@ -26,6 +27,7 @@ const CardItem = ({ blok }: CardItemProps) => {
         ctaLabel={blok.ctaLabel}
         ctaHref={blok.ctaHref}
         techStack={blok.techStack}
+        ctaOpenInNewTab={blok.ctaOpenInNewTab}
       />
 
     </div>
