@@ -10,6 +10,7 @@ interface CardItemBlok extends SbBlokData {
   ctaHref: string;
   techStack?: string[];
   ctaOpenInNewTab?: boolean;
+  projectType?: "professional" | "capstone" | "personal"; 
 }
 
 interface CardItemProps {
@@ -28,6 +29,7 @@ const CardItem = ({ blok }: CardItemProps) => {
         ctaHref={blok.ctaHref}
         techStack={blok.techStack}
         ctaOpenInNewTab={blok.ctaOpenInNewTab}
+        projectType={blok.projectType as "professional" | "capstone" | "personal"}
       />
 
     </div>

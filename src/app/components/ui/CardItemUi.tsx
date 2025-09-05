@@ -2,7 +2,39 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { IconExternalLink } from "@tabler/icons-react";
+import { IconExternalLink, IconBriefcase, IconSchool, IconCode } from "@tabler/icons-react";
+import { Tooltip as ReactTooltip } from "react-tooltip";
+
+// Define project types with their display properties
+type ProjectType = "professional" | "capstone" | "personal";
+
+interface ProjectTypeConfig {
+  label: string;
+  icon: React.ReactNode;
+  bgColor: string;
+  tooltipText: string;
+}
+
+const PROJECT_TYPES: Record<ProjectType, ProjectTypeConfig> = {
+  professional: {
+    label: "Professional Work",
+    icon: <IconBriefcase size={16} />,
+    bgColor: "bg-blue-100",
+    tooltipText: "Project completed in a collaborative work environment for an employer."
+  },
+  capstone: {
+    label: "Capstone Project",
+    icon: <IconSchool size={16} />,
+    bgColor: "bg-green-100",
+    tooltipText: "Study project showcasing skills and knowledge acquired."
+  },
+  personal: {
+    label: "Personal Project",
+    icon: <IconCode size={16} />,
+    bgColor: "bg-orange-100",
+    tooltipText: "Self-initiated project driven by personal interest or passion."
+  }
+};
 
 interface CardItemUiProps {
   headline?: string;
@@ -13,6 +45,7 @@ interface CardItemUiProps {
   ctaHref: string;
   ctaOpenInNewTab?: boolean;
   techStack?: string[];
+  projectType?: ProjectType; // New prop
 }
 
 const CardItemUi = ({
@@ -24,6 +57,7 @@ const CardItemUi = ({
   ctaHref,
   ctaOpenInNewTab,
   techStack = [],
+  projectType, // Add this to the props
 }: CardItemUiProps) => {
   // Helper function to check if a URL is external
   const isExternalUrl = (url: string): boolean => {
@@ -38,6 +72,9 @@ const CardItemUi = ({
   
   // Common button/link styling
   const linkClassName = "group inline-flex items-center justify-center sm:justify-start w-full sm:w-auto px-6 py-3 font-semibold text-base sm:text-lg lg:text-xl text-white bg-primary-100 hover:bg-primary-500 transition duration-300 rounded-md hover:cursor-pointer";
+  
+  // Generate a unique tooltip ID based on project type and component instance
+  const tooltipId = projectType ? `project-type-tooltip-${projectType}` : "";
   
   // Render either Link or anchor based on URL type
   const renderCTA = () => {
@@ -60,6 +97,25 @@ const CardItemUi = ({
         </Link>
       );
     }
+  };
+
+  // Render the project type chip with tooltip using ReactTooltip
+  const renderProjectTypeChip = () => {
+    if (!projectType || !PROJECT_TYPES[projectType]) return null;
+    
+    const { label, icon, bgColor } = PROJECT_TYPES[projectType];
+    
+    return (
+      <div className="inline-block mb-3">
+        <div 
+          data-tooltip-id={tooltipId}
+          className={`${bgColor} text-primary-900 text-xs font-sm flex items-center gap-1 px-2.5 py-1 rounded-full`}
+        >
+          {icon}
+          <span>{label}</span>
+        </div>
+      </div>
+    );
   };
 
   // Render either Link or anchor for image
@@ -101,10 +157,10 @@ const CardItemUi = ({
   };
 
   return (
-   <motion.div
+    <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.5 }}
+      viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.5 }}
       variants={{
         hidden: { opacity: 0, y: 50 },
@@ -117,6 +173,9 @@ const CardItemUi = ({
         {/* Left column: Text content */}
         <div className="p-8 lg:p-4 m-4 lg:mx-8 flex flex-col justify-center md:w-1/2">
           <div>
+            {/* Project Type Chip */}
+            {renderProjectTypeChip()}
+            
             <h1 className="text-2xl md:text-3xl mb-3 font-bold text-white">
               {title}
             </h1>
@@ -129,7 +188,7 @@ const CardItemUi = ({
                 {techStack.map((tech, index) => (
                   <span
                     key={index}
-                    className="text-xs font-medium px-2 py-1 bg-white text-primary-500 rounded-md"
+                    className="text-xs font-medium px-2 py-1 border-2 border-white text-white rounded-md"
                   >
                     {tech}
                   </span>
@@ -151,6 +210,17 @@ const CardItemUi = ({
           </div>
         )}
       </div>
+      
+      {/* Tooltip Component - will be positioned automatically */}
+      {projectType && PROJECT_TYPES[projectType] && (
+        <ReactTooltip
+          id={tooltipId}
+          place="top"
+          content={PROJECT_TYPES[projectType].tooltipText}
+          className="max-w-xs !bg-primary-500 !text-white !opacity-100 !py-2 !px-3 !text-xs z-50"
+         
+        />
+      )}
     </motion.div>
   );
 };
