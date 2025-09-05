@@ -6,6 +6,7 @@ import CardItem from "@/app/components/CardItem";
 import Text from "@/app/components/Text";
 import TextImage from "@/app/components/TextImage";
 import Contact from "@/app/components/Contact";
+import CollapsibleText from "@/app/components/CollapsibleText";
 
 export const getStoryblokApi = storyblokInit({
   accessToken: process.env.STORYBLOK_DELIVERY_API_TOKEN,
@@ -18,6 +19,7 @@ export const getStoryblokApi = storyblokInit({
     text: Text,
     textImage: TextImage,
     contact: Contact,
+    collapsibleText: CollapsibleText,
   },
   apiOptions: {
     /** Set the correct region for your space. Learn more: https://www.storyblok.com/docs/packages/storyblok-js#example-region-parameter */
